@@ -8,7 +8,9 @@ export const getStaticPaths = async () => {
 	const res = await fetch('https://astrosite.zyrolink.workers.dev/json')
 	const siteData = await res.json()
 
-	return Object.entries(siteData.pages).map(([pageId, page]) => mapPageProps(pageId, page, siteData))
+	return Object.entries(siteData.pages)
+  		.filter(([pageId, page]) => !!page.slug && pageId !== siteData.meta.homePageId)
+		.map(([pageId, page]) => mapPageProps(pageId, page, siteData))
 }
 ---
 <Page page={page} />
