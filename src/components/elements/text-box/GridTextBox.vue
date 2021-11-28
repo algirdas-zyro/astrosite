@@ -1,7 +1,6 @@
 <template>
 	<div
 		class="text-box"
-		v-on="$listeners"
 		v-html="content"
 	/>
 </template>

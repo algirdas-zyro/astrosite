@@ -62,20 +62,12 @@ const { page, globalStyle } = await getPageProps();
         {(()=>{
           switch (block.type) {
             default: return (
-              <div
-                class="block-grid"
-                style={getStyle(block.settings.styles)}
-              >
+              <div class="block-grid" style={getStyle(block.settings.styles)}>
                 {block?.elements.map(element => (
-                  <div
-                    class="block-grid-item use-m-margin"
-                    style={element.style}
-                  >
+                  <div class="block-grid-item use-m-margin" style={element.style} >
                   {(()=> {
                     switch (element.type) {
-                      case 'GridTextBox': return (
-                          <GridTextBox content={element.content} client:visible />
-                      )
+                      case 'GridTextBox': return <GridTextBox {...element.props} client:visible />
                       case 'GridImage': return <GridImage {...element.props} client:visible />
                       default: return null
                     }

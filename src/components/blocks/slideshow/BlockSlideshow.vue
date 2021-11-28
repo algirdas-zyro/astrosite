@@ -37,7 +37,6 @@
 			v-if="slideshowSettings.isNavigationBulletsVisible"
 			:slide-count="slidesCount"
 			:active-slide-index="currentSlideIndex"
-			v-on="$listeners"
 		/>
 	</div>
 </template>

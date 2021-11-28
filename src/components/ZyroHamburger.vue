@@ -5,7 +5,6 @@
 		:class="{ 'burger--open' : isOpen }"
 		:title="title"
 		:style="computedStyles"
-		v-on="$listeners"
 	>
 		<span class="burger__bun" />
 		<span class="burger__meat" />

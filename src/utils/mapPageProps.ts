@@ -15,9 +15,6 @@ import {
   getGridItemSize,
 } from '../utils/getGridItemSize';
 
-// import { useLightbox } from '@/components/reusable-components/lightbox/useLightbox';
-import { parseCSSSides } from '../utils/parseCSSSides';
-
 
 const concatStyles = (object) => Object.entries(object).map(([key, value]) => `${key}:${value};`).join('');
 const getStyle = (style) => concatStyles(objectToCSSVariables(style));
@@ -87,6 +84,19 @@ const getHeaderProps = (page, siteData, homePageId) => {
   }
 }
 
+const getGridTextBoxProps = (element) => {
+  const { settings } = element;
+  const { styles } = settings;
+
+  return {
+    type: element.type,
+    style: getStyle(styles),
+    props: {
+      content: element.content,
+    }
+  };
+};
+
 const getGridImageProps = (element, block) => {
   const { settings } = element;
   const {
@@ -145,6 +155,7 @@ export const mapPageProps = (pageId, page, siteData) => {
       .map((elementId) => {
         const element = siteData.components[elementId];
         switch (element.type) {
+          case 'GridTextBox': return getGridTextBoxProps(element);
           case 'GridImage': return getGridImageProps(element, block);
           default: return element;
         }

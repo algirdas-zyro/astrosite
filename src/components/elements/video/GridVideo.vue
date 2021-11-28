@@ -1,8 +1,5 @@
 <template>
-	<div
-		class="video"
-		v-on="$listeners"
-	>
+	<div class="video">
 		<iframe
 			v-if="renderIframe"
 			:src="src"

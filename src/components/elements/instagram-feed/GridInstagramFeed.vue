@@ -1,7 +1,6 @@
 <template>
 	<div
 		class="instagram-feed"
-		v-on="$listeners"
 	>
 		<template
 			v-for="({ src, alt, href }, index) in media"

@@ -32,7 +32,6 @@
           v-for="subItem in item.subItems"
           :key="subItem.id"
           :item="subItem"
-          v-on="$listeners"
         />
       </ul>
     </div>
