@@ -10,8 +10,7 @@ import '../assets/scss/BlockGrid.scss';
 import '../assets/scss/BlockGridItem.scss';
 
 
-// const res = await fetch('https://zidiniusiluma.lt/data.json') // replace with worker?url=https://zidiniusiluma.lt/data.json
-const res = await fetch('https://prefetch.zyrosite.com/data.json')
+const res = await fetch('https://astrosite.zyrolink.workers.dev/get')
 const siteData = await res.json()
 
 const concatStyles = (object) => Object.entries(object).map(([key, value]) => `${key}:${value};`).join('');

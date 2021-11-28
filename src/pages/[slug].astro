@@ -5,8 +5,7 @@ import { mapPageProps } from '../utils/mapPageProps';
 const { page } = Astro.props;
 
 export const getStaticPaths = async () => {
-	// const res = await fetch('https://zidiniusiluma.lt/data.json')
-	const res = await fetch('https://prefetch.zyrosite.com/data.json')
+	const res = await fetch('https://astrosite.zyrolink.workers.dev/get')
 	const siteData = await res.json()
 	// const initialSiteData = await res.json()
 	// const siteData = {
