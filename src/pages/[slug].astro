@@ -9,7 +9,7 @@ export const getStaticPaths = async () => {
 	const siteData = await res.json()
 
 	return Object.entries(siteData.pages)
-  		.filter(([pageId, page]) => !!page.slug && pageId !== siteData.meta.homePageId)
+  		.filter(([pageId, page]) => !!page?.slug && pageId !== siteData.meta.homePageId)
 		.map(([pageId, page]) => mapPageProps(pageId, page, siteData))
 }
 ---

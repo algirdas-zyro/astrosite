@@ -175,7 +175,7 @@ export const mapPageProps = (pageId, page, siteData) => {
     props: {
       page: {
         ...page,
-        blocks: blocks,
+        blocks,
         headerProps,
         globalStyle: getStyle(styles),
         ...(isHomePage && { isHomePage: true })
