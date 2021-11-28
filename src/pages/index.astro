@@ -58,7 +58,7 @@ const { page, globalStyle } = await getPageProps();
           <BlockBackground
             background={block.background}
             isFixed={block.settings.styles.attachment === 'fixed'}
-            isLazy
+            isLazy={false}
           />
         {(()=>{
           switch (block.type) {
