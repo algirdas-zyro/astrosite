@@ -20,8 +20,9 @@ const concatStyles = (object) => Object.entries(object).map(([key, value]) => `$
 const getStyle = (style) => concatStyles(objectToCSSVariables(style));
 
 const [{props, params}] = Object.entries(siteData.pages)
-	.filter(([pageId, page]) => pageId === siteData.meta.homePageId)
+	.filter(([pageId]) => pageId === siteData.meta.homePageId)
 	.map(([pageId, page]) => mapPageProps(pageId, page, siteData))
+
 const { page } = props;
 
 const BLOCK_MODIFIERS_MAP = {
@@ -42,9 +43,7 @@ const BLOCK_MODIFIERS_MAP = {
   </head>
   <body>
     <main style={getStyle(siteData.styles)}>
-      <!-- <BlockHeader
-        items="navigationItems"
-      /> -->
+      <BlockHeader { ...page.headerProps } />
 			{page?.blocks.map(block => (
         <div
           class={`block block--${BLOCK_MODIFIERS_MAP[block.type]}`}
