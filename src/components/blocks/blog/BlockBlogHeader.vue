@@ -1,25 +1,21 @@
 <template>
 	<div
-		v-qa="'blog-postinformation'"
 		class="block-blog-header"
 	>
 		<div class="block-blog-header__content">
 			<h1
-				v-qa="'blog-label-posttitle'"
 				class="font-primary block-blog-header__title block-blog-header__text-block"
 			>
 				{{ meta.title }}
 			</h1>
 			<p
 				v-if="shownItems.description"
-				v-qa="'blog-label-postdescription'"
 				class="font-secondary block-blog-header__text-block"
 			>
 				{{ meta.description }}
 			</p>
 			<BlockBlogListItemCategories
 				v-if="areCategoriesShown"
-				v-qa="'blog-label-category'"
 				class="font-secondary"
 				:categories="categories"
 			/>
@@ -104,11 +100,12 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
+@import '../../../assets/scss/abstracts';
 @import '../../../components/blocks/blog/BlockBlogFonts.scss';
 
 .block-blog-header {
-	z-index: z-index(user--block-grid);
+	z-index: $z-index-user--block-grid;
 	display: flex;
 	flex-direction: column;
 	grid-area: 1/1/-1/-1;

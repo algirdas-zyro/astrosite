@@ -37,7 +37,7 @@
 import {
 	getOptimizedSrc,
 	getFullWidthSrcset,
-} from '../../../utils/getSrcsets';
+} from '../../utils/getSrcsets';
 
 export const FULL_WIDTH = 1920; // assume that largest screen is 1920
 
@@ -99,13 +99,14 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../../assets/scss/abstracts';
 .background {
 	position: absolute;
 	top: 0;
 	right: 0;
 	bottom: 0;
 	left: 0;
-	z-index: z-index(user--block-background);
+	z-index: $z-index-user--block-background;
 	display: block;
 	clip: rect(0, auto, auto, 0);
 	background-color: var(--background-color);

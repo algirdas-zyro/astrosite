@@ -93,6 +93,7 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../../../assets/scss/abstracts';
 @import '../../../components/blocks/slideshow/BlockSlideshow.scss';
 
 .slideshow {
@@ -102,7 +103,7 @@ export default {
 		position: absolute;
 		top: 0;
 		bottom: 0;
-		z-index: z-index(controls--slideshow);
+		z-index: $z-index-controls--slideshow;
 		padding: 12px 58px;
 		cursor: pointer;
 		background: transparent;

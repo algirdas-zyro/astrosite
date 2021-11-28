@@ -1,4 +1,6 @@
 ---
+import BlockBackground from '../components/blocks/BlockBackground.vue'
+import BlockHeader from '../components/blocks/header/BlockHeader.vue'
 import GridTextBox from '../components/elements/text-box/GridTextBox.vue'
 import GridImage from '../components/elements/image/GridImage.vue'
 import { mapPageProps } from '../utils/mapPageProps';
@@ -6,6 +8,7 @@ import { objectToCSSVariables } from '../use/useSiteStyles';
 
 import 'lazysizes';
 import '../assets/scss/global.scss';
+import '../assets/scss/Block.scss';
 import '../assets/scss/BlockGrid.scss';
 import '../assets/scss/BlockGridItem.scss';
 
@@ -39,11 +42,19 @@ const BLOCK_MODIFIERS_MAP = {
   </head>
   <body>
     <main style={getStyle(siteData.styles)}>
+      <!-- <BlockHeader
+        items="navigationItems"
+      /> -->
 			{page?.blocks.map(block => (
         <div
           class={`block block--${BLOCK_MODIFIERS_MAP[block.type]}`}
           style={getStyle(block.settings.styles)}
         >
+          <BlockBackground
+            background={block.background}
+            isFixed={block.settings.styles.attachment === 'fixed'}
+            isLazy
+          />
         {(()=>{
           switch (block.type) {
             default: return (

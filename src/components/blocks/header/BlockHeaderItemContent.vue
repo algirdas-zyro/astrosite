@@ -6,7 +6,6 @@
 		]"
 	>
 		<a
-			v-qa="item.isCurrent ? `navigationblock-page-active-${item.name}` : `navigationblock-page-${item.name}`"
 			class="item-content"
 			:target="item.target"
 			:rel="item.rel"
@@ -62,7 +61,8 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
+@import '../../../assets/scss/abstracts';
 @include font-style('nav-link', '.item-content');
 
 $underline-space: 7px;

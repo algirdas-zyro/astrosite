@@ -30,13 +30,14 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
+<styles lang="scss">
+@import '../../../assets/scss/abstracts';
 .nav-bottom {
 	position: absolute;
 	right: 0;
 	bottom: 32px;
 	left: 0;
-	z-index: z-index(controls--slideshow);
+	z-index: $z-index-controls--slideshow;
 	display: flex;
 	justify-content: center;
 

@@ -2,7 +2,6 @@
 	<div
 		:id="blockId"
 		ref="blogList"
-		v-qa="'builder-section-blog'"
 		class="block-blog-list"
 	>
 		<Transition name="fade">
@@ -27,7 +26,6 @@
 			<BlockBlogListItem
 				v-for="(post, index) in currentPageItems"
 				:key="`post-${index}`"
-				v-qa="'blog-list-item'"
 				:post="post"
 				:author-full-name="userFullName"
 				:cover-object-fit="data.settings.styles['cover-object-fit']"
@@ -176,9 +174,10 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
+@import '../../assets/scss/abstracts';
 .block-blog-list {
-	z-index: z-index(user--block-grid);
+	z-index: $z-index-user--block-grid;
 	display: flex;
 	flex-direction: column;
 	grid-area: 1/1/-1/-1;

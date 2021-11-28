@@ -7,7 +7,6 @@
 		>
 			<div class="block-blog-list-item__cover-image-wrapper">
 				<img
-					v-qa="'blog-list-item-image'"
 					class="block-blog-list-item__cover-image"
 					:src="coverImage.src"
 					:alt="coverImage.alt"
@@ -118,7 +117,8 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
+@import '../../../assets/scss/abstracts';
 @import '../../../components/blocks/blog/BlockBlogFonts.scss';
 
 .block-blog-list-item {

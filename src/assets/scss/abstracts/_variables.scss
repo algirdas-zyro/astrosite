@@ -80,50 +80,48 @@ $background-overlay-grid-item: linear-gradient(
 ); // TODO: Refactor
 
 // Global z-indexes
-$z-index: (
-	/* ** Builder*/
-	/* ** Level 4 - Toasts */
-	toasts: 400,
-	/* ** Level 3 - Modals*/
-	modal--confirm: 302,
-	modal--controls: 301,
-	modal: 300,
-	/* ** Level 2 - Builder layout (header, sidebars, drawers, color-picker-popup, loader)*/
-	layout--loader: 205,
-	layout--sidebar-popup: 204,
-	layout--header: 203,
-	layout--sidebar-toggle: 202,
-	layout--sidebar: 201,
-	layout--drawer: 201,
-	layout--heatmap-header: 200,
-	layout--promo-ribbon: 200,
-	/* ** Level 1 - Controls (Edit controls, tooltips, popups)*/
-	controls--heatmap-controls: 109,
-	controls--heatmap-preview: 108,
-	controls--heatmap: 107,
-	controls--tooltip: 106,
-	controls--popup-card: 105,
-	controls--edit-block: 104,
-	controls--slideshow: 103,
-	controls--edit: 103,
-	controls--edit-block-line: 104,
-	controls--section-line: 103,
-	controls--section-control: 102,
-	controls--block-selection: 102,
-	controls--margin-control: 102,
-	controls--grid-resizer: 101,
-	controls--grid-ghost: 100,
-	controls--block-hidden: 50,
-	/* ** User site*/
-	user--modal-overlay: 19,
-	user--overlay: 18,
-	user--cookies: 17,
-	user--integration: 16,
-	user--header: 15,
-	user--block-grid: 14,
-	user--block-background: 13,
-	/* ** Site settings*/
-	settings--navigation-mobile: 4,
-	settings--navigation-backdrop: 3,
-	/* ** Various*/
-);
+/* ** Builder*/
+/* ** Level 4 - Toasts */
+$z-index-toasts: 400;
+/* ** Level 3 - Modals*/
+$z-index-modal--confirm: 302;
+$z-index-modal--controls: 301;
+$z-index-modal: 300;
+/* ** Level 2 - Builder layout (header, sidebars, drawers, color-picker-popup, loader)*/
+$z-index-layout--loader: 205;
+$z-index-layout--sidebar-popup: 204;
+$z-index-layout--header: 203;
+$z-index-layout--sidebar-toggle: 202;
+$z-index-layout--sidebar: 201;
+$z-index-layout--drawer: 201;
+$z-index-layout--heatmap-header: 200;
+$z-index-layout--promo-ribbon: 200;
+/* ** Level 1 - Controls (Edit controls, tooltips, popups)*/
+$z-index-controls--heatmap-controls: 109;
+$z-index-controls--heatmap-preview: 108;
+$z-index-controls--heatmap: 107;
+$z-index-controls--tooltip: 106;
+$z-index-controls--popup-card: 105;
+$z-index-controls--edit-block: 104;
+$z-index-controls--slideshow: 103;
+$z-index-controls--edit: 103;
+$z-index-controls--edit-block-line: 104;
+$z-index-controls--section-line: 103;
+$z-index-controls--section-control: 102;
+$z-index-controls--block-selection: 102;
+$z-index-controls--margin-control: 102;
+$z-index-controls--grid-resizer: 101;
+$z-index-controls--grid-ghost: 100;
+$z-index-controls--block-hidden: 50;
+/* ** User site*/
+$z-index-user--modal-overlay: 19;
+$z-index-user--overlay: 18;
+$z-index-user--cookies: 17;
+$z-index-user--integration: 16;
+$z-index-user--header: 15;
+$z-index-user--block-grid: 14;
+$z-index-user--block-background: 13;
+/* ** Site settings*/
+$z-index-settings--navigation-mobile: 4;
+$z-index-settings--navigation-backdrop: 3;
+/* ** Various*/

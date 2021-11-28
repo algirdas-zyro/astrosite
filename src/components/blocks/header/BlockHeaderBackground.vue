@@ -61,13 +61,14 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../../../assets/scss/abstracts';
 .background {
 	position: absolute;
 	top: 0;
 	right: 0;
 	bottom: 0;
 	left: 0;
-	z-index: z-index(user--block-background);
+	z-index: $z-index-user--block-background;
 	display: block;
 	background-color: var(--background-color);
 	transition: background-color 0.3s ease-in-out;

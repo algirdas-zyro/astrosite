@@ -4,7 +4,6 @@
 		:style="computedStyles"
 	>
 		<img
-			v-qa="'builder-siteheader-img-logo'"
 			class="block-header-logo__image"
 			:src="optimizedUrl"
 			alt="Logo"
@@ -113,7 +112,8 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
+@import '../../../assets/scss/abstracts';
 .block-header-logo {
 	width: 100%;
 	max-width: var(--width);

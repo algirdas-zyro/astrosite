@@ -63,9 +63,10 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
+@import '../../../assets/scss/abstracts';
 .block-ecwid-store {
-	z-index: z-index(user--block-grid);
+	z-index: $z-index-user--block-grid;
 	grid-area: 1/1/-1/-1;
 	width: 100%;
 	max-width: calc(var(--content-width) + var(--block-padding-right) + var(--block-padding-left));
@@ -107,7 +108,7 @@ export default {
 
 .ec-has-filters-popup {
 	.block-ecwid-store {
-		z-index: z-index(user--overlay);
+		z-index: $z-index-user--overlay;
 	}
 }
 
