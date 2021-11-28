@@ -2,12 +2,23 @@
 	<div
 		class="text-box"
 		v-on="$listeners"
-	>
-		<slot />
-	</div>
+		v-html="content"
+	/>
 </template>
 
+<script>
+export default {
+	props: {
+		content: {
+			type: String,
+			default: null,
+		},
+	},
+};
+</script>
+
 <style lang="scss" scoped>
+@import '../../../assets/scss/abstracts';
 @mixin font-spacing($element, $margin-bottom) {
 	#{$element} {
 		margin-bottom: $margin-bottom;

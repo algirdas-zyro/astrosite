@@ -41,10 +41,10 @@
 
 <script>
 
-import {
-	mapState,
-	mapGetters,
-} from 'vuex';
+// import {
+// 	mapState,
+// 	mapGetters,
+// } from 'vuex';
 
 import BlockBlogListItemCategories from '../../../components/blocks/blog/BlockBlogListItemCategories.vue';
 import BlockBlogListItemMeta from '../../../components/blocks/blog/BlockBlogListItemMeta.vue';

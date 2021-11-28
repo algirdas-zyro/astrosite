@@ -126,6 +126,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../../../assets/scss/abstracts';
 .image {
 	position: relative;
 	display: block;

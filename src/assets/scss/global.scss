@@ -4,11 +4,12 @@
  */
 
 // Base
-@import '@/scss/base/reset';
+@import './abstracts';
+@import './base/reset';
 
 // Transitions
-@import '@/scss/transitions/fade';
-@import '@/scss/transitions/slide';
+@import './transitions/fade';
+@import './transitions/slide';
 
 html {
 	scroll-behavior: smooth;

@@ -59,7 +59,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+// import { mapState } from 'vuex';
 
 import ZyroPagination from '../../../components/ZyroPagination.vue';
 import BlockBlogListItem from '../../../components/blocks/blog/BlockBlogListItem.vue';
@@ -101,7 +101,7 @@ export default {
 		};
 	},
 	computed: {
-		...mapState(['website']),
+		// ...mapState(['website']),
 		postColumnCount() {
 			return Number.parseInt(this.data.settings.styles['post-column-count'], 10);
 		},

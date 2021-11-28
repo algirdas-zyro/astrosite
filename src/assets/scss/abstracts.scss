@@ -4,13 +4,13 @@
  */
 
 // Variables
-@import '@/scss/abstracts/variables';
-@import 'abstracts/variables-user';
+@import './abstracts/variables';
+@import './abstracts/variables-user';
 
 // Functions
-@import '@/scss/functions/z-index';
+@import './functions/z-index';
 
 // Mixins
-@import '@/scss/mixins/font-style';
-@import '@/scss/mixins/skeleton-placeholder';
-@import '@/scss/mixins/zyro-media';
+@import './mixins/font-style';
+@import './mixins/skeleton-placeholder';
+@import './mixins/zyro-media';
