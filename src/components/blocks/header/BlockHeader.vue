@@ -252,7 +252,6 @@ export default {
     computedStyles() {
       const placementKey = `${this.logoPlacement}-${this.navigationPlacement}`;
       const placementKeyMobile = `${this.logoPlacementMobile}-${this.navigationPlacementMobile}`;
-      console.log({ placementKey, placementKeyMobile });
 
       const { templateColumns } =
         NAVIGATION_LOGO_MENU_POSITION_MAP[placementKey];

@@ -12,18 +12,8 @@ import '../assets/scss/Block.scss';
 import '../assets/scss/BlockGrid.scss';
 import '../assets/scss/BlockGridItem.scss';
 
-
-const res = await fetch('https://astrosite.zyrolink.workers.dev/get')
-const siteData = await res.json()
-
 const concatStyles = (object) => Object.entries(object).map(([key, value]) => `${key}:${value};`).join('');
 const getStyle = (style) => concatStyles(objectToCSSVariables(style));
-
-const [{props, params}] = Object.entries(siteData.pages)
-	.filter(([pageId]) => pageId === siteData.meta.homePageId)
-	.map(([pageId, page]) => mapPageProps(pageId, page, siteData))
-
-const { page } = props;
 
 const BLOCK_MODIFIERS_MAP = {
 	BlockEcwidStore: 'ecwid-store',
@@ -32,6 +22,20 @@ const BLOCK_MODIFIERS_MAP = {
 	BlockSlideshow: 'slideshow',
 	BlockGrid: 'grid',
 };
+
+
+const getPageProps = async () => {
+  if (!!Astro.request.params.slug) return Astro.props; // if not home page
+  const res = await fetch('https://astrosite.zyrolink.workers.dev/get')
+  const siteData = await res.json()
+  const [{props, params}] = Object.entries(siteData.pages)
+    .filter(([pageId]) => pageId === siteData.meta.homePageId)
+    .map(([pageId, page]) => mapPageProps(pageId, page, siteData))
+  
+  return props;
+}
+
+const { page, globalStyle, isHomePage } = await getPageProps();
 
 ---
 <html lang="en">
@@ -42,7 +46,8 @@ const BLOCK_MODIFIERS_MAP = {
 		<title>{page.name}</title>
   </head>
   <body>
-    <main style={getStyle(siteData.styles)}>
+    <!-- <main style={getStyle(siteData.styles)}> -->
+    <main style={globalStyle}>
       <BlockHeader { ...page.headerProps } />
 			{page?.blocks.map(block => (
         <div

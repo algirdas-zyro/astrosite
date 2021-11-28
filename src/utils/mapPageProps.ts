@@ -77,7 +77,7 @@ const getHeaderProps = (page, siteData, homePageId) => {
 
 
 export const mapPageProps = (pageId, page, siteData) => {
-	const { meta } = siteData;
+	const { meta, styles } = siteData;
 	const { homePageId } = meta;
 	const isHomePage = pageId === homePageId;
 	const headerProps = getHeaderProps(page, siteData, homePageId);
@@ -86,7 +86,7 @@ export const mapPageProps = (pageId, page, siteData) => {
 		const block = siteData.blocks[blockId];
 
 		const elements = block.components
-			// .filter(({ hidden }) => !hidden)
+			.filter(({ hidden }) => !hidden)
 			.map((elementId) => {
 				const element = siteData.components[elementId];
 				return {
@@ -111,6 +111,7 @@ export const mapPageProps = (pageId, page, siteData) => {
 				...page,
 				blocks: blocks,
 				headerProps,
+				globalStyle: getStyle(styles),
 				...(isHomePage && { isHomePage: true })
 			},
 		},
