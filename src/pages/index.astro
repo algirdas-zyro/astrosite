@@ -1,32 +1,68 @@
 ---
 // Component Imports
-import Counter from '../components/Counter.vue'
+// import GridTextBox from '../components/elements/text-box/GridTextBox.vue'
+// import GridImage from '../components/elements/image/GridImage.vue'
+import { mapPageProps } from '../utils/mapPageProps';
+import { objectToCSSVariables } from '../use/useSiteStyles';
+import 'lazysizes';
+import '../assets/scss/global.scss';
+import '../assets/scss/BlockGrid.scss';
+import '../assets/scss/BlockGridItem.scss';
+// import '../../../../src-user/components/block-grid/BlockGrid.scss';
+// import '../../../../src-user/components/block-grid-item/BlockGridItem.scss';
 
 
-// Full Astro Component Syntax:
-// https://docs.astro.build/core-concepts/astro-components/
+// const res = await fetch('https://zidiniusiluma.lt/data.json') // replace with worker?url=https://zidiniusiluma.lt/data.json
+const res = await fetch('https://prefetch.zyrosite.com/data.json')
+const siteData = await res.json()
+
+const concatStyles = (object) => Object.entries(object).map(([key, value]) => `${key}:${value};`).join('');
+const getStyle = (style) => concatStyles(objectToCSSVariables(style));
+
+const [{props, params}] = Object.entries(siteData.pages)
+	.filter(([pageId, page]) => pageId === siteData.meta.homePageId)
+	.map(([pageId, page]) => mapPageProps(pageId, page, siteData))
+const { page } = props;
+
 ---
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <style>
-      html,
-      body {
-        font-family: system-ui;
-        margin: 0;
-      }
-      body {
-        padding: 2rem;
-      }
-    </style>
+		<title>{page.name}</title>
   </head>
   <body>
-    <main>
-      <Counter client:visible>
-        <h1>Hello, Vue!</h1>
-      </Counter>
+    <main style={getStyle(siteData.styles)}>
+			{page?.blocks.map(block => {
+				switch (block.type) {
+					case 'BlockGrid': return (
+						<section
+							class="block-grid"
+							style={getStyle(block.settings.styles)}>
+							{block?.elements.map(element => (
+								<div
+									class="block-grid-item use-m-margin"
+									style={getStyle(element.settings.styles)}
+								>
+								{(()=> {
+									switch (element.type) {
+										case 'GridTextBox': return (
+												<GridTextBox content={element.content}/>
+										)
+										case 'GridImage': return (
+												<GridImage src={element.settings.image} isLazy={false}/>
+										)
+										default: return null
+									}
+								})()}
+								</div>
+								))}
+						</section>
+					)
+					default: return null
+				}
+			})}
     </main>
   </body>
 </html>

@@ -1,0 +1,62 @@
+$color-grey-light: #767676;
+
+@include font-style('h5', 'h5', '.payment-info');
+@include font-style('body-large', '.body-large', '.payment-info');
+
+.payment-info {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	padding: 48px 0;
+
+	@include zyro-media($media-grid) {
+		padding: 16px 0;
+	}
+
+	&__content {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		max-width: 380px;
+		height: 100%;
+		margin: 0 auto;
+
+		@include zyro-media($media-grid) {
+			max-width: 288px;
+			margin: 0 25px;
+		}
+	}
+
+	&__title {
+		margin-bottom: 8px;
+
+		&:not(.s) {
+			font-size: 32px;
+			color: $dark;
+
+			@include zyro-media($media-grid) {
+				font-size: 24px;
+			}
+		}
+	}
+
+	&__text {
+		margin-bottom: 24px;
+
+		&:not(.s) {
+			font-size: 16px;
+			color: $color-grey-light;
+		}
+	}
+
+	&__button {
+		&:not(.s) {
+			&:hover {
+				border-width: var(--grid-button-primary-border-width);
+			}
+		}
+	}
+}

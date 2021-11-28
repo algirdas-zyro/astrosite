@@ -1,0 +1,13 @@
+// -- Media queries -- //
+// Activated on small screens and for mobile preview
+@mixin zyro-media($size) {
+	@if ($media-render-preview) {
+		.zyro-mb-preview {
+			@content;
+		}
+	}
+
+	@media screen and (max-width: $size) {
+		@content;
+	}
+}

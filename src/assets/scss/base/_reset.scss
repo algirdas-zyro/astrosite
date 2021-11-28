@@ -1,0 +1,68 @@
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+* {
+	padding: 0;
+	margin: 0;
+	color: inherit;
+}
+
+*::before,
+*::after {
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	margin: 0;
+	font-family: $font-family;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+button {
+	font-family: $font-family;
+	background-color: white;
+	border: none;
+	outline: none;
+	box-shadow: none;
+}
+
+label[for] {
+	cursor: pointer;
+}
+
+iframe {
+	border-width: 0;
+}
+
+/**
+* Prosemirror uses `white-space: pre-wrap` by default to handle whitespaces.
+* Since we use `text-align: justify` for our editor, alignment works only with `white-space: normal`
+* Problem is, as far as I tested, Firefox removes all spaces from the end of the text while typing because of this.
+* There is an issue in ProseMirror repo for this (but it is quite stale) - https://github.com/ProseMirror/prosemirror/issues/857
+* So, for now, lets live with the layout shifts when using `text-align: justify` on FF.
+*/
+
+.ProseMirror {
+	white-space: normal;
+
+	&[contenteditable=true] {
+		cursor: text;
+	}
+
+	&:focus {
+		outline: none;
+	}
+}
+
+@supports (-moz-appearance:none) {
+	.ProseMirror {
+		&[contenteditable=true] {
+			white-space: pre-wrap;
+		}
+	}
+}

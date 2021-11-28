@@ -1,0 +1,16 @@
+/**
+ * abstracts file is imported to all css files.
+ * The config can be found in vue.config.js, where this file is imported.
+ */
+
+// Variables
+@import '@/scss/abstracts/variables';
+@import 'abstracts/variables-user';
+
+// Functions
+@import '@/scss/functions/z-index';
+
+// Mixins
+@import '@/scss/mixins/font-style';
+@import '@/scss/mixins/skeleton-placeholder';
+@import '@/scss/mixins/zyro-media';

@@ -1,0 +1,34 @@
+$translate-distance: 1em;
+
+@mixin slide-transition($nameFrom, $nameTo, $translateValueFrom, $translateValueTo) {
+	.slide {
+		&-#{$nameFrom}-enter-active,
+		&-#{$nameFrom}-leave-active,
+		&-#{$nameTo}-enter-active,
+		&-#{$nameTo}-leave-active {
+			transition-timing-function: cubic-bezier(0.45, 0, 0.1, 1);
+			transition-duration: 0.2s;
+			transition-property: opacity, transform;
+		}
+
+		&-#{$nameFrom}-enter,
+		&-#{$nameTo}-leave-active {
+			opacity: 0;
+			transform: $translateValueFrom;
+		}
+
+		&-#{$nameFrom}-leave-active,
+		&-#{$nameTo}-enter {
+			opacity: 0;
+			transform: $translateValueTo;
+		}
+	}
+}
+
+// --- Slide transitions --- //
+// Slide left/right
+@include slide-transition('right', 'left', translate($translate-distance, 0), translate(-$translate-distance, 0));
+// Slide top/bottom
+@include slide-transition('top', 'bottom', translate(0, $translate-distance), translate(0, -$translate-distance));
+// Slide top-to-bottom and bottom-to-top
+@include slide-transition('top-to-bottom', 'bottom-to-top', translate(0, -$translate-distance), translate(0, -$translate-distance));

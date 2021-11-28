@@ -1,0 +1,19 @@
+.font {
+	&-primary {
+		font-family: var(--font-primary);
+		font-size: 24px;
+		font-style: normal;
+		font-weight: bold;
+		line-height: 1.3;
+		color: var(--colors-font-color);
+	}
+
+	&-secondary {
+		font-family: var(--font-secondary);
+		font-size: 16px;
+		font-style: normal;
+		font-weight: normal;
+		line-height: 1.3;
+		color: var(--colors-grey-800);
+	}
+}

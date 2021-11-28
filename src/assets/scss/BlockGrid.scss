@@ -1,0 +1,45 @@
+.block-grid {
+	position: relative;
+	z-index: z-index(user--block-grid);
+	display: grid;
+	grid-area: 1/1/-1/-1;
+	grid-template-rows: repeat(var(--rows), var(--row-size));
+	grid-template-columns:
+		calc((var(--container-width) - var(--content-width)) / 2)
+		1fr
+		repeat(var(--column-count), minmax(0, var(--column-width)))
+		1fr
+		calc((var(--container-width) - var(--content-width)) / 2);
+	grid-auto-rows: var(--row-size);
+	row-gap: var(--row-gap);
+	column-gap: var(--column-gap);
+	width: 100%;
+	padding: var(--block-padding);
+	margin: 0 auto;
+
+	--column-gap-count: calc(var(--column-count) - 1);
+	--column-width:
+		calc(
+			(var(--grid-width) - (var(--column-gap-count) * var(--column-gap))) / var(--column-count)
+		);
+	--container-width: 100vw;
+}
+
+// @include zyro-media($media-grid) {
+// 	.block-grid {
+// 		display: flex;
+// 		flex-direction: column;
+// 		grid-gap: 0;
+// 		padding: var(--m-block-padding);
+
+// 		&.has-zero-m-vertical-padding {
+// 			padding-top: 0;
+// 			padding-bottom: 0;
+// 		}
+
+// 		&--mobile-full-height {
+// 			justify-content: center;
+// 			min-height: calc(100vh - var(--header-height, 0px));
+// 		}
+// 	}
+// }

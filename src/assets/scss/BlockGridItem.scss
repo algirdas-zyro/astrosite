@@ -1,0 +1,24 @@
+.block-grid-item {
+	position: relative;
+	z-index: var(--element-z-index);
+	display: flex;
+	flex-direction: column;
+	grid-area: var(--position);
+	align-items: var(--align);
+	justify-content: var(--justify);
+	padding: var(--grid-item-padding);
+	overflow: hidden;
+	text-align: var(--text);
+}
+
+// @include zyro-media($media-grid) {
+// 	.block-grid-item {
+// 		grid-area: auto;
+// 		grid-column: 3/-3;
+// 		align-items: var(--m-align, var(--align));
+// 		align-self: var(--m-align-self);
+// 		justify-content: var(--m-justify, var(--justify));
+// 		max-width: 100%;
+// 		text-align: var(--m-text, var(--text));
+// 	}
+// }

@@ -1,0 +1,55 @@
+@mixin font-style($prefix, $element: $fontName, $parent: false) {
+	@if ($parent) {
+		#{$parent} {
+			::v-deep {
+				@include single-font-style($prefix, $element);
+			}
+		}
+
+		@include zyro-media($media-grid) {
+			#{$parent} {
+				::v-deep {
+					@include single-font-style(#{$prefix}, $element, true);
+				}
+			}
+		}
+	}
+
+	@else {
+		@include single-font-style($prefix, $element);
+
+		@include zyro-media($media-grid) {
+			@include single-font-style(#{$prefix}, $element, true);
+		}
+	}
+}
+
+@mixin single-font-style($prefix, $element: $fontName, $mobile: false) {
+	@if ($mobile) {
+		#{$element} {
+			font-family: var(--#{$prefix}-m-font-family, var(--#{$prefix}-font-family));
+			font-size: var(--#{$prefix}-m-font-size, var(--#{$prefix}-font-size));
+			font-style: var(--#{$prefix}-m-font-style, var(--#{$prefix}-font-style));
+			font-weight: var(--#{$prefix}-m-font-weight, var(--#{$prefix}-font-weight));
+			line-height: var(--#{$prefix}-m-line-height, var(--#{$prefix}-line-height));
+			color: var(--#{$prefix}-m-color, var(--#{$prefix}-color));
+			text-decoration: var(--#{$prefix}-m-text-decoration, var(--#{$prefix}-text-decoration));
+			text-transform: var(--#{$prefix}-m-text-transform, var(--#{$prefix}-text-transform));
+			letter-spacing: var(--#{$prefix}-m-letter-spacing, var(--#{$prefix}-letter-spacing));
+		}
+	}
+
+	@else {
+		#{$element} {
+			font-family: var(--#{$prefix}-font-family);
+			font-size: var(--#{$prefix}-font-size);
+			font-style: var(--#{$prefix}-font-style);
+			font-weight: var(--#{$prefix}-font-weight);
+			line-height: var(--#{$prefix}-line-height);
+			color: var(--#{$prefix}-color);
+			text-decoration: var(--#{$prefix}-text-decoration);
+			text-transform: var(--#{$prefix}-text-transform);
+			letter-spacing: var(--#{$prefix}-letter-spacing);
+		}
+	}
+}

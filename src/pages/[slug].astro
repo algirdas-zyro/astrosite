@@ -1,0 +1,20 @@
+---
+import Index from './index.astro';
+import { mapPageProps } from '../utils/mapPageProps';
+
+const { page } = Astro.props;
+
+export const getStaticPaths = async () => {
+	// const res = await fetch('https://zidiniusiluma.lt/data.json')
+	const res = await fetch('https://prefetch.zyrosite.com/data.json')
+	const siteData = await res.json()
+	// const initialSiteData = await res.json()
+	// const siteData = {
+	// 	...initialSiteData,
+	// 	pages: Object.fromEntries(Object.entries(initialSiteData.pages).filter((_, i) => i < 100))
+	// }
+
+	return Object.entries(siteData.pages).map(([pageId, page]) => mapPageProps(pageId, page, siteData))
+}
+---
+	<Index page={page} />

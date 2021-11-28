@@ -1,0 +1,4 @@
+.block-slideshow {
+	padding-top: var(--header-height, 0);
+	margin-top: calc(-1 * var(--header-height, 0));
+}

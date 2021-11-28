@@ -1,0 +1,129 @@
+// Media
+$media-grid: 920px; // Grid/flex change point
+
+// Builder header height
+$header-height: 50px;
+
+// Box shadow
+$box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+$box-shadow-no-offset: 0 0 14px rgba(0, 0, 0, 0.1);
+
+// Font
+$font-family: "Roboto", sans-serif;
+
+// Colors
+$primary-hover: #4a3299;
+$primary: #583bb6;
+$primary-light: #ab80de;
+$primary-focus: #c5b3ff;
+$primary-lighter: #ece9f7;
+
+$secondary-hover: #d21d48;
+$secondary: #fa2356;
+$secondary-light: #ff7f82;
+$secondary-focus: #ff93ad;
+$secondary-lighter: #ffeaec;
+
+$accent-one: #280f74;
+$accent-one-light: #4716db;
+$accent-one-lighter: #aeb9f4;
+
+$accent-two-hover: #2d69d1;
+$accent-two: #357df9;
+$accent-two-light: #8ac6ff;
+$accent-two-focus: #abcaff;
+$accent-two-lighter: #e0ecff;
+
+$accent-three: #ffc259;
+$accent-three-light: #ffdc82;
+$accent-three-lighter: #fde9c6;
+
+$success: #32d37d;
+
+$grey-100: #f5f8fb;
+$grey-200: #ebeff2; // TODO: replace with $grey-300 and remove?
+$grey-300: #e6e6e6;
+$grey-400: #dde1e6; // www name: color-grey--600
+$grey-600: #9da3a9; // www name: color-disabled
+$grey-700: #7d7d7d;
+$grey-600-02: rgba($grey-600, 0.2);
+$grey-800: #474b4f;
+$grey-800-02: rgba($grey-800, 0.2);
+
+$dark-hover: #4d4d4d;
+$dark: #000;
+$dark-focus: #4f4e4e;
+
+$light-hover: #b2b2b2;
+$light: #fff;
+$light-focus: #cfcfcf;
+
+//Borders
+$border-radius-round: 999px;
+$border-radius-large: 15px;
+$border-radius-small: 5px;
+$border-radius-tiny: 3px;
+
+// Easing
+$easing-standard: cubic-bezier(0.4, 0, 0.2, 1);
+$easing-decelerate: cubic-bezier(0, 0, 0.2, 1);
+$easing-accelerate: cubic-bezier(0.4, 0, 1, 1);
+
+// Background overlays
+$background-overlay: linear-gradient(
+	rgba($dark, var(--background-overlay-opacity, 0)),
+	rgba($dark, var(--background-overlay-opacity, 0))
+); // TODO: Refactor
+$background-overlay-grid-item: linear-gradient(
+	rgba($dark, var(--gridItemInnerBackgroundOverlayOpacity, 0)),
+	rgba($dark, var(--gridItemInnerBackgroundOverlayOpacity, 0))
+); // TODO: Refactor
+
+// Global z-indexes
+$z-index: (
+	/* ** Builder*/
+	/* ** Level 4 - Toasts */
+	toasts: 400,
+	/* ** Level 3 - Modals*/
+	modal--confirm: 302,
+	modal--controls: 301,
+	modal: 300,
+	/* ** Level 2 - Builder layout (header, sidebars, drawers, color-picker-popup, loader)*/
+	layout--loader: 205,
+	layout--sidebar-popup: 204,
+	layout--header: 203,
+	layout--sidebar-toggle: 202,
+	layout--sidebar: 201,
+	layout--drawer: 201,
+	layout--heatmap-header: 200,
+	layout--promo-ribbon: 200,
+	/* ** Level 1 - Controls (Edit controls, tooltips, popups)*/
+	controls--heatmap-controls: 109,
+	controls--heatmap-preview: 108,
+	controls--heatmap: 107,
+	controls--tooltip: 106,
+	controls--popup-card: 105,
+	controls--edit-block: 104,
+	controls--slideshow: 103,
+	controls--edit: 103,
+	controls--edit-block-line: 104,
+	controls--section-line: 103,
+	controls--section-control: 102,
+	controls--block-selection: 102,
+	controls--margin-control: 102,
+	controls--grid-resizer: 101,
+	controls--grid-ghost: 100,
+	controls--block-hidden: 50,
+	/* ** User site*/
+	user--modal-overlay: 19,
+	user--overlay: 18,
+	user--cookies: 17,
+	user--integration: 16,
+	user--header: 15,
+	user--block-grid: 14,
+	user--block-background: 13,
+	/* ** Site settings*/
+	settings--navigation-mobile: 4,
+	settings--navigation-backdrop: 3,
+	/* ** Various*/
+);

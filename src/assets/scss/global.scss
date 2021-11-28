@@ -1,0 +1,15 @@
+/**
+ * global.scss is imported in app root file - main-user.js
+ * and are accessible globally across the project
+ */
+
+// Base
+@import '@/scss/base/reset';
+
+// Transitions
+@import '@/scss/transitions/fade';
+@import '@/scss/transitions/slide';
+
+html {
+	scroll-behavior: smooth;
+}
