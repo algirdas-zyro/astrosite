@@ -1,0 +1,62 @@
+---
+import BlockBackground from '../components/blocks/BlockBackground.vue'
+import BlockHeader from '../components/blocks/header/BlockHeader.vue'
+import GridTextBox from '../components/elements/text-box/GridTextBox.vue'
+import GridImage from '../components/elements/image/GridImage.vue'
+import { objectToCSSVariables } from '../use/useSiteStyles';
+
+import 'lazysizes';
+import '../assets/scss/global.scss';
+import '../assets/scss/Block.scss';
+import '../assets/scss/BlockGrid.scss';
+import '../assets/scss/BlockGridItem.scss';
+
+const concatStyles = (object) => Object.entries(object).map(([key, value]) => `${key}:${value};`).join('');
+const getStyle = (style) => concatStyles(objectToCSSVariables(style));
+
+const BLOCK_MODIFIERS_MAP = {
+	BlockEcwidStore: 'ecwid-store',
+	BlockBlogHeader: 'blog-header',
+	BlockBlogList: 'blog-list',
+	BlockSlideshow: 'slideshow',
+	BlockGrid: 'grid',
+};
+
+const { page } = Astro.props;
+
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+		<title>{page.name}</title>
+  </head>
+  <body>
+    <main style={page?.globalStyle}>
+      <BlockHeader { ...page.headerProps } client:idle />
+        {page?.blocks.map(block => (
+          <div
+            class={`block block--${BLOCK_MODIFIERS_MAP[block.type]}`}
+            style={getStyle(block.settings.styles)}
+          >
+            <BlockBackground
+              background={block.background}
+              isFixed={block.settings.styles.attachment === 'fixed'}
+              client:visible
+            />
+            {block.type === 'BlockGrid' && (
+              <div class="block-grid" style={getStyle(block.settings.styles)}>
+                {block?.elements.map(element => (
+                  <div class="block-grid-item use-m-margin" style={element.style} >
+                    {element.type === 'GridTextBox' && <GridTextBox { ...element.props } client:visible />}
+                    {element.type === 'GridImage' && <GridImage { ...element.props } client:visible />}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        ))}
+    </main>
+  </body>
+</html>

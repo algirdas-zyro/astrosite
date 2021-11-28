@@ -1,5 +1,5 @@
 ---
-import Index from './index.astro';
+import Page from '../layouts/Page.astro';
 import { mapPageProps } from '../utils/mapPageProps';
 
 const { page } = Astro.props;
@@ -11,4 +11,4 @@ export const getStaticPaths = async () => {
 	return Object.entries(siteData.pages).map(([pageId, page]) => mapPageProps(pageId, page, siteData))
 }
 ---
-	<Index page={page} />
+<Page page={page} />

@@ -1,85 +1,12 @@
 ---
-import BlockBackground from '../components/blocks/BlockBackground.vue'
-import BlockHeader from '../components/blocks/header/BlockHeader.vue'
-import GridTextBox from '../components/elements/text-box/GridTextBox.vue'
-import GridImage from '../components/elements/image/GridImage.vue'
+import Page from '../layouts/Page.astro'
 import { mapPageProps } from '../utils/mapPageProps';
-import { objectToCSSVariables } from '../use/useSiteStyles';
 
-import 'lazysizes';
-import '../assets/scss/global.scss';
-import '../assets/scss/Block.scss';
-import '../assets/scss/BlockGrid.scss';
-import '../assets/scss/BlockGridItem.scss';
-
-const concatStyles = (object) => Object.entries(object).map(([key, value]) => `${key}:${value};`).join('');
-const getStyle = (style) => concatStyles(objectToCSSVariables(style));
-
-const BLOCK_MODIFIERS_MAP = {
-	BlockEcwidStore: 'ecwid-store',
-	BlockBlogHeader: 'blog-header',
-	BlockBlogList: 'blog-list',
-	BlockSlideshow: 'slideshow',
-	BlockGrid: 'grid',
-};
-
-
-const getPageProps = async () => {
-  if (!!Astro.request?.params?.slug) return Astro.props;
-
-  const res = await fetch('https://astrosite.zyrolink.workers.dev/json')
-  const siteData = await res.json()
-  const [{props, params}] = Object.entries(siteData.pages)
-    .filter(([pageId]) => pageId === siteData.meta.homePageId)
-    .map(([pageId, page]) => mapPageProps(pageId, page, siteData))
+const res = await fetch('https://astrosite.zyrolink.workers.dev/json')
+const siteData = await res.json()
+const [{props, params}] = Object.entries(siteData.pages)
+  .filter(([pageId]) => pageId === siteData.meta.homePageId)
+  .map(([pageId, page]) => mapPageProps(pageId, page, siteData))
   
-  return props;
-}
-
-const { page, globalStyle } = await getPageProps();
-
 ---
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-		<title>{page.name}</title>
-  </head>
-  <body>
-    <main style={globalStyle}>
-      <BlockHeader { ...page.headerProps } client:idle />
-			{page?.blocks.map(block => (
-        <div
-          class={`block block--${BLOCK_MODIFIERS_MAP[block.type]}`}
-          style={getStyle(block.settings.styles)}
-        >
-          <BlockBackground
-            background={block.background}
-            isFixed={block.settings.styles.attachment === 'fixed'}
-            client:visible
-          />
-        {(()=>{
-          switch (block.type) {
-            default: return (
-              <div class="block-grid" style={getStyle(block.settings.styles)}>
-                {block?.elements.map(element => (
-                  <div class="block-grid-item use-m-margin" style={element.style} >
-                  {(()=> {
-                    switch (element.type) {
-                      case 'GridTextBox': return <GridTextBox {...element.props} client:visible />
-                      case 'GridImage': return <GridImage {...element.props} client:visible />
-                      default: return null
-                    }
-                  })()}
-                  </div>
-                  ))}
-              </div>
-            )
-          }
-        })()}
-        </div>
-      ))}
-    </main>
-  </body>
-</html>
+<Page page={props.page} />

@@ -33,7 +33,7 @@
         :is-optimized="isLogoOptimized"
         :object-position="logoObjectPosition"
         :object-position-mobile="logoObjectPositionMobile"
-        @click.native="$emit('logo-click')"
+        @click="$emit('logo-click')"
       />
 
       <ZyroHamburger
