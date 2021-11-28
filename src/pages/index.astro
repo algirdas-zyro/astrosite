@@ -47,7 +47,6 @@ const { page, globalStyle } = await getPageProps();
 		<title>{page.name}</title>
   </head>
   <body>
-    <!-- <main style={getStyle(siteData.styles)}> -->
     <main style={globalStyle}>
       <BlockHeader { ...page.headerProps } client:idle />
 			{page?.blocks.map(block => (
@@ -58,7 +57,6 @@ const { page, globalStyle } = await getPageProps();
           <BlockBackground
             background={block.background}
             isFixed={block.settings.styles.attachment === 'fixed'}
-            isLazy={false}
             client:visible
           />
         {(()=>{
@@ -71,16 +69,14 @@ const { page, globalStyle } = await getPageProps();
                 {block?.elements.map(element => (
                   <div
                     class="block-grid-item use-m-margin"
-                    style={getStyle(element.settings.styles)}
+                    style={element.style}
                   >
                   {(()=> {
                     switch (element.type) {
                       case 'GridTextBox': return (
                           <GridTextBox content={element.content} client:visible />
                       )
-                      case 'GridImage': return (
-                          <GridImage src={element.settings.image} client:visible />
-                      )
+                      case 'GridImage': return <GridImage {...element.props} client:visible />
                       default: return null
                     }
                   })()}
