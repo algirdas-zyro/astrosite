@@ -59,6 +59,7 @@ const { page, globalStyle } = await getPageProps();
             background={block.background}
             isFixed={block.settings.styles.attachment === 'fixed'}
             isLazy={false}
+            client:visible
           />
         {(()=>{
           switch (block.type) {
@@ -75,10 +76,10 @@ const { page, globalStyle } = await getPageProps();
                   {(()=> {
                     switch (element.type) {
                       case 'GridTextBox': return (
-                          <GridTextBox content={element.content}/>
+                          <GridTextBox content={element.content} client:visible />
                       )
                       case 'GridImage': return (
-                          <GridImage src={element.settings.image}/>
+                          <GridImage src={element.settings.image} client:visible />
                       )
                       default: return null
                     }
