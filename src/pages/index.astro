@@ -49,7 +49,7 @@ const { page, globalStyle } = await getPageProps();
   <body>
     <!-- <main style={getStyle(siteData.styles)}> -->
     <main style={globalStyle}>
-      <BlockHeader { ...page.headerProps } />
+      <BlockHeader { ...page.headerProps } client:idle />
 			{page?.blocks.map(block => (
         <div
           class={`block block--${BLOCK_MODIFIERS_MAP[block.type]}`}
