@@ -25,7 +25,7 @@ const BLOCK_MODIFIERS_MAP = {
 
 
 const getPageProps = async () => {
-  if (!!Astro.request.params.slug) return Astro.props;
+  if (!!Astro.request?.params?.slug) return Astro.props;
 
   const res = await fetch('https://astrosite.zyrolink.workers.dev/get')
   const siteData = await res.json()
@@ -36,7 +36,7 @@ const getPageProps = async () => {
   return props;
 }
 
-const { page, globalStyle, isHomePage } = await getPageProps();
+const { page, globalStyle } = await getPageProps();
 
 ---
 <html lang="en">
