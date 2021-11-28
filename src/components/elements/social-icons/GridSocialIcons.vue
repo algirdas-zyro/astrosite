@@ -102,7 +102,7 @@ export default {
 			color: var(--icon-color-hover, var(--colors-grey-800));
 		}
 
-		::v-deep svg {
+		svg {
 			width: var(--icon-size, 25px);
 			height: var(--icon-size, 25px);
 			object-fit: contain;

@@ -1,16 +1,12 @@
 @mixin font-style($prefix, $element: $fontName, $parent: false) {
 	@if ($parent) {
 		#{$parent} {
-			::v-deep {
-				@include single-font-style($prefix, $element);
-			}
+			@include single-font-style($prefix, $element);
 		}
 
 		@include zyro-media($media-grid) {
 			#{$parent} {
-				::v-deep {
-					@include single-font-style(#{$prefix}, $element, true);
-				}
+				@include single-font-style(#{$prefix}, $element, true);
 			}
 		}
 	}

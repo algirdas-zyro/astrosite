@@ -1,9 +1,9 @@
 ---
-// Component Imports
 import GridTextBox from '../components/elements/text-box/GridTextBox.vue'
 import GridImage from '../components/elements/image/GridImage.vue'
 import { mapPageProps } from '../utils/mapPageProps';
 import { objectToCSSVariables } from '../use/useSiteStyles';
+
 import 'lazysizes';
 import '../assets/scss/global.scss';
 import '../assets/scss/BlockGrid.scss';
@@ -21,6 +21,14 @@ const [{props, params}] = Object.entries(siteData.pages)
 	.map(([pageId, page]) => mapPageProps(pageId, page, siteData))
 const { page } = props;
 
+const BLOCK_MODIFIERS_MAP = {
+	BlockEcwidStore: 'ecwid-store',
+	BlockBlogHeader: 'blog-header',
+	BlockBlogList: 'blog-list',
+	BlockSlideshow: 'slideshow',
+	BlockGrid: 'grid',
+};
+
 ---
 <html lang="en">
   <head>
@@ -31,35 +39,42 @@ const { page } = props;
   </head>
   <body>
     <main style={getStyle(siteData.styles)}>
-			{page?.blocks.map(block => {
-				switch (block.type) {
-					case 'BlockGrid': return (
-						<section
-							class="block-grid"
-							style={getStyle(block.settings.styles)}>
-							{block?.elements.map(element => (
-								<div
-									class="block-grid-item use-m-margin"
-									style={getStyle(element.settings.styles)}
-								>
-								{(()=> {
-									switch (element.type) {
-										case 'GridTextBox': return (
-												<GridTextBox content={element.content}/>
-										)
-										case 'GridImage': return (
-												<GridImage src={element.settings.image} isLazy={false}/>
-										)
-										default: return null
-									}
-								})()}
-								</div>
-								))}
-						</section>
-					)
-					default: return null
-				}
-			})}
+			{page?.blocks.map(block => (
+        <div
+          class={`block block--${BLOCK_MODIFIERS_MAP[block.type]}`}
+          style={getStyle(block.settings.styles)}
+        >
+        {(()=>{
+          switch (block.type) {
+            default: return (
+              <div
+                class="block-grid"
+                style={getStyle(block.settings.styles)}
+              >
+                {block?.elements.map(element => (
+                  <div
+                    class="block-grid-item use-m-margin"
+                    style={getStyle(element.settings.styles)}
+                  >
+                  {(()=> {
+                    switch (element.type) {
+                      case 'GridTextBox': return (
+                          <GridTextBox content={element.content}/>
+                      )
+                      case 'GridImage': return (
+                          <GridImage src={element.settings.image}/>
+                      )
+                      default: return null
+                    }
+                  })()}
+                  </div>
+                  ))}
+              </div>
+            )
+          }
+        })()}
+        </div>
+      ))}
     </main>
   </body>
 </html>

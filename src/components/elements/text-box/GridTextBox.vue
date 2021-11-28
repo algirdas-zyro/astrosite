@@ -17,7 +17,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import '../../../assets/scss/abstracts';
 @mixin font-spacing($element, $margin-bottom) {
 	#{$element} {
@@ -48,7 +48,6 @@ export default {
 	white-space: break-spaces;
 	outline: none;
 
-	::v-deep {
 		//Font spacing
 		@include font-spacing('h1', 48px);
 		@include font-spacing('h2, h3, h4, .body-large, .body', 32px);
@@ -71,19 +70,16 @@ export default {
 		> p:empty::after {
 			content: "\00A0";
 		}
-	}
 }
 
 @include zyro-media($media-grid) {
 	.text-box {
-		::v-deep {
 			//Font spacing
 			@include font-spacing('h1', 48px);
 			@include font-spacing('h2, h3, h4, .body-large, .body', 32px);
 			@include font-spacing('h5', 16px);
 			@include font-spacing('h6', 8px);
 			@include font-spacing('.body-small', 24px);
-		}
 	}
 }
 </style>
