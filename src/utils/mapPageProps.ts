@@ -137,6 +137,8 @@ const getGridImageProps = (element, block) => {
       srcset,
       tagName,
       target,
+      width,
+      height,
     }
   };
 };
