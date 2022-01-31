@@ -109,7 +109,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .image {
 	position: relative;
 	display: block;
@@ -149,7 +149,7 @@ export default {
 	}
 }
 
-@include zyro-media($media-grid) {
+@media screen and (max-width: 920px) {
 	.image__image--reset-m-position {
 		position: static;
 		height: auto;
