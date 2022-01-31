@@ -15,14 +15,13 @@
 		<img
 			data-qa="builder-gridelement-image"
 			:alt="alt"
-			:src="isLazy ? placeholderSrc : src"
-			:data-src="isLazy && src"
-			:data-srcset="isLazy && srcset"
-			:data-sizes="isLazy && sizes"
+			:src="src"
+			:srcset="srcset"
+			:sizes="sizes"
 			:height="height"
 			:width="width"
+			:loading="isLcp? 'eager' : 'lazy'"
 			:class="{
-				'lazyload': isLazy,
 				'image__image--zoom': isLightboxEnabled,
 				'image__image--unstyled': isUnstyled,
 				'image__image': !isUnstyled,
@@ -41,7 +40,7 @@
 import {
 	ANCHOR_TAG,
 	DIV_TAG,
-} from '../../../constants';
+} from '@site-modules/constants';
 
 const ALLOWED_TAG_NAMES = [
 	DIV_TAG,
@@ -57,6 +56,10 @@ export default {
 		href: {
 			type: String,
 			default: null,
+		},
+		isLcp: {
+			type: Boolean,
+			default: false,
 		},
 		preventDrag: {
 			type: Boolean,
@@ -87,10 +90,6 @@ export default {
 			type: String,
 			default: null,
 		},
-		isLazy: {
-			type: Boolean,
-			default: false,
-		},
 		isLightboxEnabled: {
 			type: Boolean,
 			default: false,
@@ -117,16 +116,10 @@ export default {
 			ANCHOR_TAG,
 		};
 	},
-	computed: {
-		placeholderSrc() {
-			return `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 ${this.width} ${this.height}'%3E%3C/svg%3E`;
-		},
-	},
 };
 </script>
 
-<style lang="scss">
-@import '../../../assets/scss/abstracts';
+<style lang="scss" scoped>
 .image {
 	position: relative;
 	display: block;
@@ -166,7 +159,7 @@ export default {
 	}
 }
 
-@include zyro-media($media-grid) {
+@include site-engine-mobile {
 	.image__image--reset-m-position {
 		position: static;
 		height: auto;

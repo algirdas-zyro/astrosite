@@ -43,14 +43,13 @@ const { page } = Astro.props;
           <BlockBackground
             background={block.background}
             isFixed={block.settings.styles.attachment === 'fixed'}
-            client:visible
           />
           {block.type === 'BlockGrid' && (
             <div class="block-grid" style={getStyle(block.settings.styles)}>
               {block?.elements.map(element => (
                 <div class="block-grid-item use-m-margin" style={element.style} >
-                  {element.type === 'GridTextBox' && <GridTextBox { ...element.props } client:visible />}
-                  {element.type === 'GridImage' && <GridImage { ...element.props } client:visible />}
+                  {element.type === 'GridTextBox' && <GridTextBox { ...element.props } />}
+                  {element.type === 'GridImage' && <GridImage { ...element.props } />}
                 </div>
               ))}
             </div>
