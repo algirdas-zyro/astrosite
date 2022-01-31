@@ -149,7 +149,7 @@ export default {
 	}
 }
 
-@include site-engine-mobile {
+@include zyro-media($media-grid) {
 	.image__image--reset-m-position {
 		position: static;
 		height: auto;
