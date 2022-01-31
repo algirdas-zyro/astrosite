@@ -8,7 +8,7 @@
 		:class="{
 			'image': !isUnstyled,
 			'image--unstyled': isUnstyled,
-			'image--link': tagName === ANCHOR_TAG,
+			'image--link': tagName === 'a',
 		}"
 		@click="$emit('image-click', $event)"
 	>
@@ -49,7 +49,7 @@ export default {
 		},
 		isLcp: {
 			type: Boolean,
-			default: false,
+			default: true,
 		},
 		preventDrag: {
 			type: Boolean,
@@ -100,11 +100,6 @@ export default {
 			type: Number,
 			default: null,
 		},
-	},
-	setup() {
-		return {
-			ANCHOR_TAG,
-		};
 	},
 };
 </script>
