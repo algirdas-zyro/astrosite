@@ -37,16 +37,6 @@
 </template>
 
 <script>
-import {
-	ANCHOR_TAG,
-	DIV_TAG,
-} from '@site-modules/constants';
-
-const ALLOWED_TAG_NAMES = [
-	DIV_TAG,
-	ANCHOR_TAG,
-];
-
 export default {
 	props: {
 		alt: {
@@ -79,7 +69,7 @@ export default {
 		},
 		tagName: {
 			type: String,
-			validator: (tag) => ALLOWED_TAG_NAMES.includes(tag),
+			validator: (tag) => ['a', 'div'].includes(tag),
 			default: 'div',
 		},
 		target: {
