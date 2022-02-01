@@ -12,10 +12,4 @@ export default /** @type {import('astro').AstroUserConfig} */ ({
   renderers: ['@astrojs/renderer-vue'],
   '@': './src',
   $: './src',
-  vite: {
-    build: {
-      assetsInlineLimit: 4096000,
-      cssCodeSplit: false
-    }
-  }
 });
