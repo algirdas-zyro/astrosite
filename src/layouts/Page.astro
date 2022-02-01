@@ -30,11 +30,12 @@ const { page } = Astro.props;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-		<title>{page.customMeta}</title>
+		<title>{page.name}</title>
+    {page.customMeta}
   </head>
   <body>
     <main style={page?.globalStyle}>
-      <BlockHeader { ...page.headerProps } client:visible />
+      <BlockHeader { ...page.headerProps } client:idle />
 			{page?.blocks.map((block) => (
         <div
           class={`block block--${BLOCK_MODIFIERS_MAP[block.type]}`}
