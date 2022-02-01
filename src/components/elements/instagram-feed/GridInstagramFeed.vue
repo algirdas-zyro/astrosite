@@ -48,7 +48,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .instagram-feed {
 	display: grid;
 	grid-template-columns: repeat(var(--items-per-row), 1fr);

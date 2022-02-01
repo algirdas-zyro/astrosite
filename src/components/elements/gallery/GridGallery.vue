@@ -110,7 +110,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .gallery {
 	&__grid {
 		display: grid;

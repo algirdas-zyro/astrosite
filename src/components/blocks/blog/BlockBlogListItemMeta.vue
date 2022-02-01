@@ -63,7 +63,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import '@/components/blocks/blog/BlockBlogFonts.scss';
 
 .blog-list-item-meta {

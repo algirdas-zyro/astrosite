@@ -152,7 +152,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 ../../../include font-style('body', '.form');
 
 .form {

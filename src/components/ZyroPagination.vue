@@ -125,7 +125,7 @@ export default {
 	},
 };
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 // TODO: No designs for this. Update when they are in.
 // Specificity increased because zyro-button overrides pagination styles
 // Colors hard-coded because component is used in user-app as well, and variables differ.

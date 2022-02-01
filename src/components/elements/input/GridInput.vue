@@ -91,7 +91,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @mixin placeholder {
 	@include font-style('body', '.input__component');
 	::placeholder { @content; }

@@ -70,7 +70,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 $states: 'hover';
 
 // '/00A0;' is non breaking space html entity code, does not work as a constant or v-text,

@@ -22,7 +22,7 @@
 		</svg>
 	</button>
 </template>
-<style lang="scss" scoped>
+<style lang="scss">
 .close-button {
 	cursor: pointer;
 	background: none;

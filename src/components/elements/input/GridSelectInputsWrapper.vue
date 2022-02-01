@@ -123,7 +123,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .input {
 	&__label {
 		color: var(--colors-dark);

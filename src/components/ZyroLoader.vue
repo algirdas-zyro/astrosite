@@ -4,7 +4,7 @@
 	/>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .loader {
 	--default-size: 40px;
 	--default-border-color: var(--light);

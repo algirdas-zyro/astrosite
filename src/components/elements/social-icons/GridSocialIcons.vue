@@ -76,7 +76,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .social-icons {
 	display: flex;
 	flex-direction: var(--icon-direction);
