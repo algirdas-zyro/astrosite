@@ -145,7 +145,7 @@ const getGridImageProps = (element, block) => {
 
 export const mapPageProps = (pageId, page, siteData) => {
   const { meta, styles } = siteData;
-  const { homePageId } = meta;
+  const { homePageId, customMeta } = meta;
   const isHomePage = pageId === homePageId;
   const headerProps = getHeaderProps(page, siteData, homePageId);
 
@@ -180,7 +180,8 @@ export const mapPageProps = (pageId, page, siteData) => {
         blocks,
         headerProps,
         globalStyle: getStyle(styles),
-        ...(isHomePage && { isHomePage: true })
+        ...(isHomePage && { isHomePage: true }),
+        ...(customMeta && { customMeta })
       },
     },
   };
