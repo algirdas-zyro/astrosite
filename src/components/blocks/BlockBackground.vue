@@ -12,16 +12,14 @@
 			<img
 				:key="src"
 				:alt="alt"
-				:src="!isLazy && src"
-				:data-src="isLazy && src"
-				:data-srcset="isLazy && srcset"
+				:src="src"
+				:srcset="srcset"
 				sizes="100vw"
 				height="100%"
 				width="100%"
 				class="background__image"
 				:class="{
 					'background__image--fixed': isFixed,
-					'lazyload': isLazy,
 				}"
 			>
 			<div
