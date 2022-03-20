@@ -25,13 +25,16 @@ const { page } = Astro.props;
 
 ---
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-		<title>{page.name}</title>
-    {page.customMeta}
-  </head>
+  <!--
+    <head>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width" />
+      <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+      <title>{page.name}</title>
+      <div set:html={page.customMeta}/></div>
+    </head>
+  -->
+    <head set:html={page.customMeta}/>
   <body>
     <main style={page?.globalStyle}>
       <BlockHeader { ...page.headerProps } client:idle />
